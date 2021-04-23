@@ -9,8 +9,10 @@ import {
     KeyboardAvoidingView,
     Platform,
     TouchableWithoutFeedback,
-    Keyboard
+    Keyboard,
+    Alert
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {Button} from '../components/Button';
 
@@ -38,10 +40,22 @@ export function UserIdentification(){
     }
 
 
-    function handleSubmit(){
-        isFilled &&
-        navigation.navigate('Confirmation')
+    async function handleSubmit(){
+        if(isFilled){
+            try{
+                await AsyncStorage.setItem('@plantmanager:user', name);
+                navigation.navigate('Confirmation');
+            }catch{
+                Alert.alert('Não foi possível salvar o seu nome. 😓');
+                
+            }
+            
+        } else {
+            
+            Alert.alert('Me diz como chamar você 😓');
+        }
     }
+
     return(
         <SafeAreaView style={styles.container}>
             <KeyboardAvoidingView 
