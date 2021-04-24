@@ -168,7 +168,6 @@ const styles = StyleSheet.create({
         color: colors.heading,
         fontFamily: fonts.heading,
         lineHeight: 20,
-        marginTop: 15
     },
     subtitle: {
         fontFamily: fonts.text,
@@ -180,7 +179,8 @@ const styles = StyleSheet.create({
         height: 40,
         justifyContent: 'center',
         paddingBottom: 5,
-        margin: 32,
+        marginBottom: 18,
+        marginTop: 10
     },
     plants: {
         flex: 1,
